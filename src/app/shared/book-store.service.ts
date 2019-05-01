@@ -47,7 +47,6 @@ export class BookStoreService {
     pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
-
   private errorHandler(error: Error | any): Observable<any>{
     return throwError(error);
   }

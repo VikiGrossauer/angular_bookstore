@@ -48,4 +48,14 @@ export class BookDetailsComponent implements OnInit {
       );
     }
   }
+
+  addToCart() {
+    if(confirm("Buch zum Warenkorb hinzufügen?")){
+      let Objt = JSON.parse(localStorage.getItem('cart')) || {};
+      let savedBook = this.book;
+      savedBook['amount'] = 1;
+      Objt[this.book.isbn] = this.book;
+      localStorage.setItem("cart", JSON.stringify(Objt));
+    }
+  }
 }

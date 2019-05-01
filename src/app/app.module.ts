@@ -17,6 +17,13 @@ import { LoginComponent } from './login/login.component';
 import {AuthService} from "./shared/authentication.service";
 import {TokenInterceptorService} from "./shared/token-interceptor.service";
 import {JwtInterceptorService} from "./shared/jwt-interceptor.service";
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { OrderComponent } from './order/order.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { AdminComponent } from './admin/admin.component';
+import { OrderManagementComponent } from './order-management/order-management.component';
+import { OrderOverviewComponent } from './order-overview/order-overview.component';
+import { OrderEditComponent } from './order-edit/order-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,14 @@ import {JwtInterceptorService} from "./shared/jwt-interceptor.service";
     HomeComponent,
     BookFormComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    ShoppingCartComponent,
+    OrderComponent,
+    OrderHistoryComponent,
+    AdminComponent,
+    OrderManagementComponent,
+    OrderOverviewComponent,
+    OrderEditComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, DateValueAccessorModule

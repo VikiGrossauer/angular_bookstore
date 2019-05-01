@@ -45,6 +45,7 @@ export class AuthService {
     const decodedToken = decode(token);
     console.log(decodedToken);
     console.log(decodedToken.user.id);
+    console.log(decodedToken.user.isAdmin ? 'user is admin' : 'normal shop user');
     localStorage.setItem('token', token);
     localStorage.setItem('userId', decodedToken.user.id);
   }
@@ -56,9 +57,33 @@ export class AuthService {
     console.log("logged out");
   }
 
-  public isLoggedIn() {
-    return !isNullOrUndefined(localStorage.getItem("token"));
+  public isAdmin() {
+    if(!isNullOrUndefined(localStorage.getItem("token"))){
+      let token : string  = localStorage.getItem("token");
+      const decodedToken = decode(token);
+      return decodedToken.user.isAdmin;
+    }
+    return false;
   }
+
+  public isLoggedIn() {
+    if(!isNullOrUndefined(localStorage.getItem("token"))){
+      let token : string  = localStorage.getItem("token");
+      const decodedToken = decode(token);
+      let expirationDate:Date = new Date(0);
+      expirationDate.setUTCSeconds(decodedToken.exp);
+      if(expirationDate < new Date()){
+        console.log("token expired");
+        localStorage.removeItem("token");
+        return false;
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //isAdmin - was soll angezeigt werden
 
   isLoggedOut() {
     return !this.isLoggedIn();

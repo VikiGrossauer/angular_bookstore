@@ -1,0 +1,45 @@
+<div class="ui container">
+  <div *ngFor="let book of books; let i = index" class="ui segment">
+    <span><b>{{ book.title }}</b></span>
+    <br>
+    <span>Beschreibung: {{ book.description }}</span>
+    <br>
+    <span><i>Bewertung: {{ book.rating }}</i></span>
+    <br>
+    <span class="right floated">Preis: {{book.price}} €</span>
+    <br>
+    <form class="ui left corner labeled input" [formGroup]="amountForm[i]" (ngSubmit)="submitForm(i, book.isbn)">
+      <input formControlName="amount" type="number" value="1">
+      <div class="ui left corner label">
+        <i class="asterisk icon"></i>
+      </div>
+      <button type="submit" class="ui button">Ändern</button>
+    </form>
+  </div>
+
+  <button (click)="deleteCart()" class="ui button"><i class="trash icon"></i></button>
+
+
+  <table class="ui very basic table">
+    <tr>
+      <td>Versandkosten</td>
+      <td class="right aligned">3,00 €</td>
+    </tr>
+    <tr>
+      <td><b>Gesamtsumme</b> (inkl. MwSt.)</td>
+      <td class="right aligned"> {{orderPrice()}},00 € </td>
+    </tr>
+  </table>
+
+  <a *ngIf="!authService.isLoggedIn()" class="ui red button right floated"
+     [routerLink]="'/login'">
+    Login
+  </a>
+
+  <button *ngIf="authService.isLoggedIn()" class="ui positive button right floated"
+          [routerLink]="'/order'">
+    Bestellung abschicken
+  </button>
+
+  <p></p>
+</div>

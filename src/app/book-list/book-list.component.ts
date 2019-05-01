@@ -10,13 +10,6 @@ import {BookStoreService} from "../shared/book-store.service";
 export class BookListComponent implements OnInit {
   books : Book[];
 
-  /*@Output() showDetailsEvent = new EventEmitter<Book>();
-
-  showDetails(book: Book){
-    //event werfen
-    this.showDetailsEvent.emit(book);
-  }*/
-
   constructor(private bs: BookStoreService) { }
 
   ngOnInit() {

@@ -41,10 +41,9 @@ export class BookFormComponent implements OnInit {
       id: this.book.id,
       title: [this.book.title, Validators.required],
       subtitle: this.book.subtitle,
+      price: [this.book.price, Validators.required],
       isbn: [this.book.isbn, [
         Validators.required,
-        /*Validators.minLength(10),
-        Validators.maxLength(13)*/
         BookValidators.isbnFormat
       ]],
       description: this.book.description,
@@ -56,18 +55,11 @@ export class BookFormComponent implements OnInit {
       images: this.images,
       published: new Date(this.book.published)
     });
-    //immer wenn sich status ändert - update schicken
-    //console.log(new Date(this.book.published));
     this.bookForm.statusChanges.subscribe(
       () => this.updateErrorMessages());
   }
 
   buildThumbnailsArray() {
-    //console.log(this.book.images);
-    /*if(this.book.images.length == 0){ //if new book had no images -> but no in edit mode
-      this.book.images.push(new Image(0,'',''))
-    }*/
-
     this.images = this.fb.array(
       this.book.images.map(
         t => this.fb.group({
@@ -78,7 +70,6 @@ export class BookFormComponent implements OnInit {
       ),
       BookValidators.atLeastOneImage
     );
-    //console.log(this.images);
   }
 
   addThumbnailControl() {
@@ -95,9 +86,10 @@ export class BookFormComponent implements OnInit {
     filter(thumbnail => thumbnail.url);
 
     const book: Book = BookFactory.fromObject(this.bookForm.value);
-//deep copy  - did not work without??
+
+    //deep copy  - did not work without??
     book.images = this.bookForm.value.images;
-    console.log(book);
+    //console.log(book);
 
     //just copy the authors
     book.authors = this.book.authors;
@@ -106,14 +98,12 @@ export class BookFormComponent implements OnInit {
       this.bs.update(book).subscribe(res => {
         this.router.navigate(['../../books', book.isbn],
           { relativeTo: this.route });
-        console.log("update");
+        //console.log("update");
       });
     } else {
       book.user_id = 1;// just for testing
-      console.log(book);
+      //console.log(book);
       this.bs.create(book).subscribe(res => {
-        //this.book = BookFactory.empty();
-        //this.bookForm.reset(BookFactory.empty());
         this.router.navigate(['../books'], { relativeTo: this.route });
       });
     }

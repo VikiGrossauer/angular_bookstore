@@ -5,10 +5,6 @@ import {AuthService} from "./shared/authentication.service";
 @Component({
   selector: 'bs-root',
   templateUrl: './app.component.html',
-  /*template: `
-    <bs-book-list *ngIf="listOn" (showDetailsEvent)="showDetails($event)"></bs-book-list>
-    <bs-book-details *ngIf="detailsOn" [book]="book" (showListEvent)="showList()"></bs-book-details>
-  `,*/
   styles: []
 })
 
@@ -17,6 +13,10 @@ export class AppComponent{
 
   isLoggedIn(){
     return this.authService.isLoggedIn();
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin();
   }
 
   getLoginLabel(){
@@ -28,23 +28,3 @@ export class AppComponent{
     }
   }
 }
-
-/*
-export class AppComponent {
-  listOn = true;
-  detailsOn = false;
-
-  book: Book;
-
-  showList(){
-    this.listOn = true;
-    this.detailsOn = false;
-  }
-
-  showDetails(book: Book){
-    this.book = book;
-    this.listOn = false;
-    this.detailsOn = true;
-  }
-}
-*/

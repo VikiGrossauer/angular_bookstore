@@ -3,6 +3,7 @@
      [src]="book?.images[0]?.url">
 <div class="content">
   <div class="header">{{book.title}}</div>
+  <div class="price right floated">{{ book.price }} €</div>
   <div class="description">{{book.subtitle}}</div>
   <div class="metadata">
       <span *ngFor="let authors of book.authors; last as l">

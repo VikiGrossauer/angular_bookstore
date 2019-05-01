@@ -6,12 +6,15 @@ import {Book} from "../shared/book";
   selector: 'bs-home',
   template: `
    <div class="ui container">
-     <h1>Home</h1>
-     <p>Das ist der KWM Bookstore.</p>
+     <h1>Cats and Books</h1>
+     <p>Willkommen im Bücherladen rund um das Thema Katzen</p>
+     <br/>
      <a routerLink="../books" class="ui red button">
-       Buchliste ansehen
+       zur Buchliste
        <i class="right arrow icon"></i>
      </a>
+     <br/>
+     <br/>
      <bs-search class="column" (bookSelected)="bookSelected($event)"></bs-search>
    </div>
  `,

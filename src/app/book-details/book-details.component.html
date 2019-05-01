@@ -5,6 +5,7 @@
   </div>
   <div class="twelve wide column">
     <h1 class="ui header">{{ book.title }}</h1>
+    <h3 class="ui header right floated">{{ book.price }} €</h3>
     <h3 class="ui header">{{ book.subtitle }}</h3>
     <div class="ui divider"></div>
     <div class="ui grid">
@@ -30,7 +31,7 @@
   </div>
   <div class="sixteen wide column">
     <h3 class="ui header">Beschreibung</h3>
-    {{ book.desciption}}
+    {{ book.description}}
   </div>
   <div class="sixteen wide column">
     <div class="ui small images">
@@ -45,7 +46,7 @@
 
 <button *ngIf="authService.isLoggedIn()" class="ui tiny red labeled icon button"
         (click)="removeBook()">
-  <i class="remove icon"></i>
+  <i class="trash icon"></i>
   Buch löschen
 </button>
 
@@ -54,3 +55,9 @@
   <i class="write icon"></i>
   Buch bearbeiten
 </a>
+
+<button class="ui tiny blue labeled icon button"
+        (click)="addToCart()">
+  <i class="shopping cart icon"></i>
+  in den Warenkorb
+</button>
