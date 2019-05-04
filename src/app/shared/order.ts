@@ -1,5 +1,6 @@
 import {Book} from "./book";
 import {State} from "./state";
+import {User} from "./user";
 
 export {Book} from "./book";
 export {State} from "./state";
@@ -11,5 +12,6 @@ export class Order {
               public ust: number,
               public user_id: number,
               public books: Book[],
-              public states: State[]){}
+              public states: State[],
+              public user: User[]){}
 }

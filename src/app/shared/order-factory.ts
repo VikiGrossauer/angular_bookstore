@@ -3,7 +3,7 @@ import {Order} from './order';
 export class OrderFactory {
 
   static empty():Order {
-    return new Order(null, new Date(), 0, 0, 0, null, null);
+    return new Order(null, new Date(), 0, 0, 0, null, null, null);
   }
 
   static fromObject(rawOrder: any): Order{
@@ -14,7 +14,8 @@ export class OrderFactory {
       rawOrder.ust,
       rawOrder.user_id,
       rawOrder.books,
-      rawOrder.states
+      rawOrder.states,
+      rawOrder.user
     );
   }
 }

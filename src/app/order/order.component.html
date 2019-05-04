@@ -4,13 +4,30 @@
   <h2>Bestelldaten</h2>
 
   <h3>Bestellungs Nr. {{order.id}}</h3>
-  <!--Hier Daten zeigen
-    Bücher
-    Lieferadresse
-    Kosten
-  -->
+  <div class="books">
+    <span *ngFor="let books of order.books; last as l">
+      Title: {{books.title}}
+      <span *ngIf="!l">, <br></span>
+    </span>
+  </div>
+  <br>
+  <div *ngIf="order">
+    <p>{{order.order_date}}</p>
+    <p>Gesamtpreis: {{order.total_price}},00 €</p>
+    <div>
+    </div>
+  </div>
 
+  <div class="user">
+    <span *ngFor="let user of users.user">
+      Anschrift: {{user.firstname}} {{user.lastname}}
+      Adresse: {{user.address}}
+      PLZ: {{user.plz}}
+      Ort: {{user.city}}
+    </span>
+  </div>
 
+  <span>ende</span>
 
   <button class="ui positive button right floated"
           [routerLink]="'/history'">

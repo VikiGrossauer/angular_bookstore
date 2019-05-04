@@ -11,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class OrderComponent implements OnInit {
   order: Order = OrderFactory.empty();
+  users: Order[] = new Array();
 
   constructor(private os: OrderService,
               private route: ActivatedRoute) { }
@@ -21,16 +22,7 @@ export class OrderComponent implements OnInit {
 
     this.os.getOrder(params['id']).subscribe(o => {
       this.order=OrderFactory.fromObject(o);
-    })
-
-    //mithilfe von getUser User holen und ausgeben
-    /*
-    console.log(params['user_id']);
-    this.os.getUser(params['user_id']).subscribe(user =>{
-      this.order['user_id']= OrderFactory.fromObject(user)
-      console.log(params['user_id']);
-    })*/
-
+    });
   }
 
 }

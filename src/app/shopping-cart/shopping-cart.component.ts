@@ -90,6 +90,6 @@ export class ShoppingCartComponent implements OnInit {
         {relativeTo: this.route});
     });
 
-    //localStorage.removeItem("cart");
+    localStorage.removeItem("cart");
   }
 }
