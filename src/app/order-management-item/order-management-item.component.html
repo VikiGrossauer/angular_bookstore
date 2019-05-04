@@ -1,21 +1,12 @@
 <div class="ui container">
-
-  <h1>Bestellübersicht</h1>
-
+  <div class="user">UserID: {{order.user_id}}</div>
+  <div class="date">Bestellungsdatum: {{order.order_date}}</div>
   <div class="books">
     <span *ngFor="let books of order.books; last as l">
       Title: {{books.title}}
       <span *ngIf="!l">, <br></span>
     </span>
   </div>
-
-  <div *ngIf="order">
-    <p>{{order.order_date}}</p>
-    <p>Gesamtpreis: {{order.total_price}}</p>
-    <div>
-    </div>
-  </div>
-
   <div class="states">
     <span *ngFor="let states of order.states; last as l">
       <br>

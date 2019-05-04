@@ -1,7 +1,10 @@
 <div class="ui container">
 
   <h1>Bestellungen</h1>
-  <!--Bestellungen auslesen
-    +draufklicken können -> zu editOrder
-  -->
+  <div class="ui middle aligned selection divided list">
+    <a class="os-order-management-item item"
+       *ngFor="let order of orders" [order]="order"
+       [routerLink]="order.id">
+    </a>
+  </div>
 </div>

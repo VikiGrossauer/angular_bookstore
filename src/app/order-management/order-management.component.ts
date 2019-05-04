@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Order} from "../shared/order";
+import {OrderService} from "../shared/order.service";
 
 @Component({
   selector: 'bs-order-management',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class OrderManagementComponent implements OnInit {
+  orders: Order[];
 
-  constructor() { }
+  constructor(private os: OrderService) { }
 
   ngOnInit() {
+    this.os.getAll().subscribe(res=>{this.orders = res});
   }
 
 }

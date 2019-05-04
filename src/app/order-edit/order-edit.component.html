@@ -1,8 +1,45 @@
-<div class="ui container">
+<div class="ui container" *ngIf="order">
 
-  <h1>Bestellung Nr. X</h1>
-  <!--Bestellung bearbeiten
-    Status
-    Kommentare
-  -->
+  <h1>Bestellungs Nr. {{order.id}}</h1>
+  <p>UserID: {{order.user_id}}</p>
+
+  <div class="books">
+    <span *ngFor="let books of order.books; last as l">
+      <b>Title: </b>{{books.title}}
+      <span *ngIf="!l">, <br></span>
+    </span>
+  </div>
+  <br>
+  <div class="state">
+    <span *ngFor="let states of order.states; last as l">
+      Vergebener Status: {{states.state}}
+      <span *ngIf="!l">, </span><br>
+      <span *ngIf="states.comment != 0">
+        Vergebenes Kommentar: {{states.comment}}
+      </span>
+      <span *ngIf="!l">, </span><br>
+    </span>
+  </div>
+
+  <br>
+  <form [formGroup]="stateForm" (ngSubmit)="submitForm()">
+    <h2>Attribute Ändern: </h2>
+    <div class="field">
+      <label>Status: </label>
+      <select class="ui selection state">
+        <option value="open">Offen</option>
+        <option value="paid">Bezahlt</option>
+        <option value="sent">Versendet</option>
+        <option value="canceled">Storniert</option>
+      </select>
+    </div>
+    <div class="ui form field">
+      <label>Kommentar: </label>
+      <input type="text" name="comment">
+    </div>
+    <br>
+    <button class="ui button" type="submit">Ändern</button>
+  </form>
+  <br>
+  <div>Letzte Änderung: {{getTime()}}</div>
 </div>

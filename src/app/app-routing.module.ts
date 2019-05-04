@@ -18,17 +18,16 @@ const routes: Routes = [
   {path:'home', component: HomeComponent},
   {path:'books', component: BookListComponent},
   {path:'books/:isbn', component: BookDetailsComponent},
-  //{path:'admin', component: BookFormComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'addBook', component: BookFormComponent},
   {path: 'manageOrder', component: OrderManagementComponent},
-  {path: 'editOrder', component: OrderEditComponent},
+  {path: 'manageOrder/:id', component: OrderEditComponent},
   {path:'admin/:isbn', component: BookFormComponent},
   {path:'login', component: LoginComponent},
   {path: 'cart', component: ShoppingCartComponent},
-  {path: 'order', component: OrderComponent},
+  {path: 'cart/:id', component: OrderComponent},
   {path: 'history', component: OrderHistoryComponent},
-  {path: 'orderOverview', component: OrderOverviewComponent}
+  {path: 'history/:id', component: OrderOverviewComponent}
 ]
 
 @NgModule({

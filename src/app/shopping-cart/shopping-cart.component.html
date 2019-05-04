@@ -37,7 +37,7 @@
   </a>
 
   <button *ngIf="authService.isLoggedIn()" class="ui positive button right floated"
-          [routerLink]="'/order'">
+          (click)="submitOrder()">
     Bestellung abschicken
   </button>
 

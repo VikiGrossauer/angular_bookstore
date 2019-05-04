@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Book} from "../shared/book";
 import {AuthService} from "../shared/authentication.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {OrderService} from "../shared/order.service";
+import {Order} from "../shared/order";
+import {OrderFactory} from "../shared/order-factory";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'bs-shopping-cart',
@@ -10,9 +14,14 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class ShoppingCartComponent implements OnInit {
   books : Book[] = new Array();
+  order = OrderFactory.empty;
   amountForm: FormGroup[] = [ ];
 
-  constructor(public authService: AuthService, private fb:FormBuilder) { }
+  constructor(public authService: AuthService,
+              private fb:FormBuilder,
+              private os: OrderService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     if (localStorage.length > 0) {
@@ -60,8 +69,27 @@ export class ShoppingCartComponent implements OnInit {
     let totalPrice = 0;
     for (let i = 0; i < this.books.length; i++){
       totalPrice += this.books[i]['amount'] * this.books[i]['price'];
-
-      return totalPrice+3;
     }
+    return totalPrice+3;
+  }
+
+  submitOrder(){
+    const storage = JSON.parse(localStorage.getItem('cart'));
+    let rawOrder = {
+      books: Object.values(storage),
+      user_id: Number(localStorage.getItem('userId')),
+      states: 'Offen',
+      total_price: this.orderPrice(),
+      ust: 10
+    };
+    const order: Order = OrderFactory.fromObject(rawOrder);
+    this.os.create(order).subscribe(res => {
+      console.log("Daten");
+      console.log(res);
+      this.router.navigate(['../../order', order.id],
+        {relativeTo: this.route});
+    });
+
+    //localStorage.removeItem("cart");
   }
 }

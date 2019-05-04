@@ -1,0 +1,11 @@
+<div class="ui container">
+  <div class="date">Bestellungsdatum: {{order.order_date}}</div>
+  <div class="price right floated">{{order.total_price}},00 €</div>
+  <div class="books">
+    <span *ngFor="let books of order.books; last as l">
+      {{books.title}} <br> {{books.subtitle}} <br> Preis: {{books.price}},00 €
+      <span *ngIf="!l">, <br><br></span>
+    </span>
+  </div>
+
+</div>

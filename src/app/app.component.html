@@ -1,9 +1,9 @@
-<div class="ui {{isAdmin() || isLoggedIn() ? 'five' : 'four'}} item tabs menu">
+<div class="ui {{isLoggedIn() ? 'five' : 'four'}} item tabs menu">
   <a routerLink="/home" routerLinkActive="active" class="item">Home</a>
   <a routerLink="/books" routerLinkActive="active" class="item">Books</a>
   <a *ngIf="isLoggedIn() && isAdmin()" routerLink="/admin" routerLinkActive="active" class="item">Administration</a>
   <a *ngIf="isLoggedIn() && !isAdmin()" routerLink="/history" routerLinkActive="active" class="item">Bestellungen</a>
   <a routerLink="/login" routerLinkActive="active" class="item">{{ getLoginLabel() }}</a>
-  <a routerLink="/cart" routerLinkActive="active" class="item blue"><i class="shopping cart icon"></i></a>
+  <a *ngIf="!isAdmin()" routerLink="/cart" routerLinkActive="active" class="item blue"><i class="shopping cart icon"></i></a>
 </div>
 <router-outlet></router-outlet>

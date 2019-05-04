@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Order} from "../shared/order";
+import {OrderService} from "../shared/order.service";
 
 @Component({
   selector: 'bs-order-history',
@@ -6,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class OrderHistoryComponent implements OnInit {
+  orders : Order[] = new Array();
 
-  constructor() { }
+  constructor(private os: OrderService) { }
 
   ngOnInit() {
-    //Daten aus DB auslesen
+    this.os.getAll().subscribe(res=> {this.orders = res;
+      console.log(this.orders);
+    });
+  }
+
+  getSortedOrders() {
+    return this.orders.sort((o1, o2) => {
+      return +new Date(o2.order_date) - +new Date(o1.order_date);
+    })
   }
 
 }
