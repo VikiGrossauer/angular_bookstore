@@ -14,7 +14,7 @@ export class OrderService {
 
   getAll(): Observable<Array<Order>>{
     return this.http.get(`${this.api}/orders`)
-      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
   getUser(userId): Observable<Array<Order>>{

@@ -26,6 +26,7 @@ import { OrderOverviewComponent } from './order-overview/order-overview.componen
 import { OrderEditComponent } from './order-edit/order-edit.component';
 import { OrderHistoryItemComponent } from './order-history-item/order-history-item.component';
 import { OrderManagementItemComponent } from './order-management-item/order-management-item.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { OrderManagementItemComponent } from './order-management-item/order-mana
     OrderOverviewComponent,
     OrderEditComponent,
     OrderHistoryItemComponent,
-    OrderManagementItemComponent
+    OrderManagementItemComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, DateValueAccessorModule

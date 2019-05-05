@@ -17,17 +17,7 @@
     <div>
     </div>
   </div>
-
-  <div class="user">
-    <span *ngFor="let user of users.user">
-      Anschrift: {{user.firstname}} {{user.lastname}}
-      Adresse: {{user.address}}
-      PLZ: {{user.plz}}
-      Ort: {{user.city}}
-    </span>
-  </div>
-
-  <span>ende</span>
+  <bs-user-info></bs-user-info>
 
   <button class="ui positive button right floated"
           [routerLink]="'/history'">
