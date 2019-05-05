@@ -3,6 +3,7 @@ import {Order} from "../shared/order";
 import {OrderService} from "../shared/order.service";
 import {OrderFactory} from "../shared/order-factory";
 import {ActivatedRoute} from "@angular/router";
+import {User} from "../shared/user";
 
 @Component({
   selector: 'bs-order',
@@ -11,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class OrderComponent implements OnInit {
   order: Order = OrderFactory.empty();
-  users: Order[] = new Array();
+  users: User[] = new Array();
 
   constructor(private os: OrderService,
               private route: ActivatedRoute) { }

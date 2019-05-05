@@ -6,6 +6,7 @@ import {OrderService} from "../shared/order.service";
 import {Order} from "../shared/order";
 import {OrderFactory} from "../shared/order-factory";
 import {ActivatedRoute, Router} from "@angular/router";
+import {User} from "../shared/user";
 
 @Component({
   selector: 'bs-shopping-cart',
@@ -16,6 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   books : Book[] = new Array();
   order = OrderFactory.empty;
   amountForm: FormGroup[] = [ ];
+  user : User;
 
   constructor(public authService: AuthService,
               private fb:FormBuilder,
@@ -32,7 +34,7 @@ export class ShoppingCartComponent implements OnInit {
       for (let i in parsedBooks) {
         if (parsedBooks.hasOwnProperty(i)) {
           this.books.push(parsedBooks[i]);
-          console.log(this.books);
+          console.log(this.books[0].user);
         }
       }
     } else {
@@ -84,12 +86,12 @@ export class ShoppingCartComponent implements OnInit {
     };
     const order: Order = OrderFactory.fromObject(rawOrder);
     this.os.create(order).subscribe(res => {
-      console.log("Daten");
-      console.log(res);
-      this.router.navigate(['../../order', order.id],
-        {relativeTo: this.route});
+      let orderId = res.id;
+      /*this.router.navigate(['/cart', order.id],
+        {relativeTo: this.route});*/
+      this.router.navigate(['./cart/'+orderId]);
     });
 
-    localStorage.removeItem("cart");
+    //localStorage.removeItem("cart");
   }
 }

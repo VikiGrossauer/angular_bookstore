@@ -56,7 +56,7 @@
   Buch bearbeiten
 </a>
 
-<button class="ui tiny blue labeled icon button"
+<button *ngIf="!authService.isAdmin()" class="ui tiny blue labeled icon button"
         (click)="addToCart()">
   <i class="shopping cart icon"></i>
   in den Warenkorb

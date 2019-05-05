@@ -1,5 +1,6 @@
 import {Author} from "./author";
 import {Image} from "./image";
+import {User} from "./user";
 export {Author} from "./author";
 export {Image} from "./image";
 
@@ -15,6 +16,7 @@ export class Book {
               public subtitle?: string,
               public rating?: number,
               public images?: Image[],
-              public description?: string
+              public description?: string,
+              public user?: User[]
               ){}
 }
