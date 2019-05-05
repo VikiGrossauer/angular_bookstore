@@ -34,7 +34,7 @@ export class OrderService {
 
   //update Status + Comment
   updateState(order:Order): Observable<any>{
-    return this.http.put(`${this.api}/order/${order.id}`,order)
+    return this.http.post(`${this.api}/order/${order.id}`,order)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
