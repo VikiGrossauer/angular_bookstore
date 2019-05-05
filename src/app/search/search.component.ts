@@ -30,7 +30,6 @@ export class SearchComponent implements OnInit {
       pipe(tap(()=>this.isLoading = true)).
       subscribe((books) => {
         this.foundBooks = books;
-        console.log(this.foundBooks)
       } );
   }
 

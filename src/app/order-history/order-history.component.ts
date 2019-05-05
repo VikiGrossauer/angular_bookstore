@@ -14,7 +14,6 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit() {
     this.os.getAll().subscribe(res=> {this.orders = res;
-      console.log(this.orders);
     });
   }
 

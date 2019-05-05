@@ -27,14 +27,11 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.length > 0) {
-      console.log("items");
       let parsedBooks = JSON.parse(localStorage.getItem('cart'));
-      console.log(parsedBooks);
 
       for (let i in parsedBooks) {
         if (parsedBooks.hasOwnProperty(i)) {
           this.books.push(parsedBooks[i]);
-          console.log(this.books[0].user);
         }
       }
     } else {
@@ -92,6 +89,6 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigate(['./cart/'+orderId]);
     });
 
-    //localStorage.removeItem("cart");
+    localStorage.removeItem("cart");
   }
 }

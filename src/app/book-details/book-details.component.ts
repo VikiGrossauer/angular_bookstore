@@ -31,9 +31,7 @@ export class BookDetailsComponent implements OnInit {
     const params = this.route.snapshot.params;
     this.bs.getSingle(params['isbn']).subscribe(b => {
       this.book=b;
-      console.log(this.book);
     });
-    console.log(this.book);
   }
 
   getRating(num: number){

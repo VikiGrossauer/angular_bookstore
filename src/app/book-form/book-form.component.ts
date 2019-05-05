@@ -89,7 +89,6 @@ export class BookFormComponent implements OnInit {
 
     //deep copy  - did not work without??
     book.images = this.bookForm.value.images;
-    //console.log(book);
 
     //just copy the authors
     book.authors = this.book.authors;
@@ -98,11 +97,9 @@ export class BookFormComponent implements OnInit {
       this.bs.update(book).subscribe(res => {
         this.router.navigate(['../../books', book.isbn],
           { relativeTo: this.route });
-        //console.log("update");
       });
     } else {
       book.user_id = 1;// just for testing
-      //console.log(book);
       this.bs.create(book).subscribe(res => {
         this.router.navigate(['../books'], { relativeTo: this.route });
       });

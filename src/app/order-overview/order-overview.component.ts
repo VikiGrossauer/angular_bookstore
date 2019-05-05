@@ -18,7 +18,6 @@ export class OrderOverviewComponent implements OnInit {
 
   ngOnInit() {
     const params = this.route.snapshot.params;
-    console.log(params);
     this.os.getOrder(params['id']).subscribe(o => {
       this.order=OrderFactory.fromObject(o);
     });

@@ -47,7 +47,6 @@ export class OrderEditComponent implements OnInit {
       this.os.updateState(order).subscribe(res => {
         this.router.navigate(['../../manageOrders'],
           {relativeTo: this.route})
-        console.log(order)
       });
     } else {
       console.log("no update");
